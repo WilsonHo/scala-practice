@@ -1,23 +1,35 @@
 package bao.ho.app
 
-import java.io.{DataInputStream, File, FileInputStream, InputStream}
+import java.io.{DataInputStream, File, FileInputStream}
 
-import org.apache.commons.io.IOUtils
 import org.scalatra._
-import org.scalatra.servlet.FileUploadSupport
 
-class DownloadController extends ScalatraServlet with FileUploadSupport with FlashMapSupport {
+import scala.concurrent.duration.Duration
+import scala.concurrent.{ExecutionContext, Future}
+
+class DownloadController extends ScalatraServlet with FutureSupport {
   // /download?file_name=abc.csv
   get("/") {
-    val optFileName = params.get("file_name")
-    val file        = new File("/Users/bao.ho/Downloads/star2002-full.csv")
-    val inputStream = new DataInputStream(new FileInputStream(file))
-//    val result = IOUtils.toByteArray(inputStream)
-    val downloadHeader = Map(
-      "Content-Type" -> ("application/octet-stream"),
-      "Content-Disposition" -> (s"""attachment; filename="${optFileName
-        .getOrElse("download_file")}"""")
-    )
-    Ok(inputStream, downloadHeader)
+    new AsyncResult {
+      import scala.concurrent.duration._
+      override def timeout: Duration = Duration.Inf
+      val is =
+        Future {
+          val optFileName = params.get("file_name")
+          val file = new File(
+            "/tmp/datasets/etl_output/GFX_FOBO_CA_Spot_AEJ/2019/11/14/outputs/application_1573654458283_0192/adjustment_template.csv"
+          )
+          val inputStream = new DataInputStream(new FileInputStream(file))
+          //    val result = IOUtils.toByteArray(inputStream)
+          val downloadHeader = Map(
+            "Content-Type" -> ("application/octet-stream"),
+            "Content-Disposition" -> (s"""attachment; filename="${optFileName
+              .getOrElse("download_file")}"""")
+          )
+          Ok(inputStream, downloadHeader)
+        }
+    }
   }
+
+  override protected implicit def executor: ExecutionContext = ExecutionContext.global
 }
