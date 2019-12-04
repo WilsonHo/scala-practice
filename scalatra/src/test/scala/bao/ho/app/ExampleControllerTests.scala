@@ -2,14 +2,12 @@ package bao.ho.app
 
 import org.scalatra.test.scalatest._
 
-class MyScalatraServletTests extends ScalatraFunSuite {
-
-  addServlet(classOf[MyScalatraServlet], "/*")
+class ExampleControllerTests extends ScalatraFunSuite {
+  addServlet(classOf[ExampleController], "/*")
 
   test("GET / on MyScalatraServlet should return status 200") {
     get("/") {
-      status should equal (200)
+      status should equal(200)
     }
   }
-
 }

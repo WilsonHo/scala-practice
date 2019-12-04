@@ -5,7 +5,7 @@ lazy val commonSettings = Seq(
   version := "1.0.0",
   scalaVersion := "2.12.10",
   coverageEnabled.in(Test, test) := true,
-  coverageEnabled in(Compile, compile) := false,
+  coverageEnabled in (Compile, compile) := false,
   (scalacOptions in Compile) ++= scalacOptionsForVersion(scalaVersion.value),
   (scalacOptions in Test) --= Seq(
     "-Ywarn-dead-code",
@@ -13,7 +13,9 @@ lazy val commonSettings = Seq(
   ),
   resolvers ++= Seq(
     "Maven Central".at("https://repo1.maven.org/maven2/"),
-    "MapR Repository".at("http://repository.mapr.com/nexus/content/groups/mapr-public/").withAllowInsecureProtocol(true),
+    "MapR Repository"
+      .at("http://repository.mapr.com/nexus/content/groups/mapr-public/")
+      .withAllowInsecureProtocol(true),
     "JBoss 3rd-party Repository".at(
       "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"
     ),
@@ -25,7 +27,6 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file("."))
   .settings(name := "scala-practice")
 
-
 lazy val standAlone = (project in file("stand-alone"))
   .settings(commonSettings: _*)
   .settings(name := "stand-alone")
@@ -35,9 +36,9 @@ lazy val scalatra = (project in file("scalatra"))
   .settings(commonSettings: _*)
   .settings(name := "scalatra")
   .settings(libraryDependencies ++= scalatraApiDependencies)
+  .settings(libraryDependencies ++= commonsIdDependencies)
   .enablePlugins(ScalatraPlugin)
   .enablePlugins(ScalafmtPlugin)
-
 
 cleanFiles += baseDirectory { base =>
   base / "temp"

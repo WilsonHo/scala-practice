@@ -1,6 +1,7 @@
 import sbt._
 
 object Dependencies {
+
   object Versions {
     val sparkVersion          = "2.4.0"
     val scalatraJson4sV       = "3.5.2"
@@ -37,12 +38,13 @@ object Dependencies {
   import Versions._
 
   val scalatraApiDependencies = Seq(
-    "org.scalatra"      %% "scalatra"         % scalatraFrameworkV,
-    "org.eclipse.jetty" % "jetty-webapp"      % "9.4.9.v20180320" % "container;compile",
-    "javax.servlet"     % "javax.servlet-api" % "3.1.0" % Provided,
-    "org.scalatra"      %% "scalatra-json"    % scalatraFrameworkV,
-    "org.scalatra"      %% "scalatra-swagger" % scalatraFrameworkV,
-    "org.json4s"        %% "json4s-native"    % "3.5.3"
+    "org.scalatra"      %% "scalatra"           % scalatraFrameworkV,
+    "org.eclipse.jetty" % "jetty-webapp"        % "9.4.9.v20180320" % "container;compile",
+    "javax.servlet"     % "javax.servlet-api"   % "3.1.0" % Provided,
+    "org.scalatra"      %% "scalatra-json"      % scalatraFrameworkV,
+    "org.scalatra"      %% "scalatra-swagger"   % scalatraFrameworkV,
+    "org.json4s"        %% "json4s-native"      % "3.5.3",
+    "org.scalatra"      %% "scalatra-scalatest" % scalatraFrameworkV % Test
   )
 
   val catsDependencies = Seq(
@@ -51,4 +53,6 @@ object Dependencies {
     "org.typelevel" %% "cats-effect" % catsV,
     "org.typelevel" %% "mouse"       % mouseV
   )
+
+  val commonsIdDependencies = Seq("commons-io" % "commons-io" % "2.6")
 }
