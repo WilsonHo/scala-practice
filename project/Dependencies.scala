@@ -54,5 +54,16 @@ object Dependencies {
     "org.typelevel" %% "mouse"       % mouseV
   )
 
+  val circeDepedencies = Seq(
+    "io.circe"     %% "circe-core"           % circeV,
+    "io.circe"     %% "circe-generic"        % circeV,
+    "io.circe"     %% "circe-literal"        % circeV,
+    "io.circe"     %% "circe-parser"         % circeV,
+    "io.circe"     %% "circe-generic-extras" % circeV,
+    "io.circe"     %% "circe-config"         % circeConfigV,
+    "com.beachape" %% "enumeratum-circe"     % enumeratumCirceV,
+    "com.beachape" %% "enumeratum-quill"     % enumeratumQuillV
+  )
+
   val commonsIdDependencies = Seq("commons-io" % "commons-io" % "2.6")
 }
