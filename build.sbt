@@ -32,6 +32,7 @@ lazy val standAlone = (project in file("stand-alone"))
   .settings(name := "stand-alone")
   .settings(libraryDependencies ++= catsDependencies)
   .settings(libraryDependencies ++= circeDepedencies)
+  .settings(libraryDependencies ++= jMimeMagicDependencies)
   .enablePlugins(ScalafmtPlugin)
 
 lazy val scalatra = (project in file("scalatra"))

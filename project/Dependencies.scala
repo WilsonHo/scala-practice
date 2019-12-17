@@ -66,4 +66,6 @@ object Dependencies {
   )
 
   val commonsIdDependencies = Seq("commons-io" % "commons-io" % "2.6")
+
+  val jMimeMagicDependencies = Seq("net.sf.jmimemagic" % "jmimemagic" % "0.1.5")
 }
