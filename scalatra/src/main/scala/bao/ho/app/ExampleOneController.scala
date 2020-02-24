@@ -1,16 +1,13 @@
 package bao.ho.app
 
-import com.codahale.metrics.Meter
 import org.scalatra._
 import org.scalatra.metrics.MetricsSupport
 
-class ExampleController(requestMetric: Meter)
-    extends ScalatraServlet
-    with MetricsSupport
-    with ExampleOneController {
+trait ExampleOneController {
+  self: ScalatraServlet with MetricsSupport =>
 //  private val requests: Meter = metrics.meter("requests")
 
-  get("/") {
+  get("/demo") {
     timer("timer") {
       Thread.sleep(1000)
     }
@@ -22,12 +19,11 @@ class ExampleController(requestMetric: Meter)
     histogram("histogram") += 1
 
     // Sets a gauge called "gauge"
-//    gauge("gauge") {
-//      "gauge"
-//    }
+    //    gauge("gauge") {
+    //      "gauge"
+    //    }
 
     meter("meter").mark(1)
-    requestMetric.mark()
-    "Hello World 4"
+    "Hello World 3"
   }
 }

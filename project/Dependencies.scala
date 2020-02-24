@@ -44,7 +44,9 @@ object Dependencies {
     "org.scalatra"      %% "scalatra-json"      % scalatraFrameworkV,
     "org.scalatra"      %% "scalatra-swagger"   % scalatraFrameworkV,
     "org.json4s"        %% "json4s-native"      % "3.5.3",
-    "org.scalatra"      %% "scalatra-scalatest" % scalatraFrameworkV % Test
+    "org.scalatra"      %% "scalatra-scalatest" % scalatraFrameworkV % Test,
+    "ch.qos.logback"    % "logback-classic"     % "1.2.3" % "runtime",
+    "org.scalatra"      %% "scalatra-metrics"   % "2.6.5"
   )
 
   val catsDependencies = Seq(
@@ -68,4 +70,14 @@ object Dependencies {
   val commonsIdDependencies = Seq("commons-io" % "commons-io" % "2.6")
 
   val jMimeMagicDependencies = Seq("net.sf.jmimemagic" % "jmimemagic" % "0.1.5")
+
+  val dropwizardDependencies = Seq(
+    "io.dropwizard.metrics" % "metrics-core"         % "4.1.2",
+    "io.dropwizard.metrics" % "metrics-healthchecks" % "4.1.2"
+  )
+
+  val log4j2Dependencies = Seq(
+    "org.apache.logging.log4j" % "log4j-api"  % "2.13.0",
+    "org.apache.logging.log4j" % "log4j-core" % "2.13.0"
+  )
 }
