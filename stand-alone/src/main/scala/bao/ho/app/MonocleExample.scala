@@ -179,6 +179,7 @@ object MonocleExample {
         )
       )
       departments.composeLens(at("Physics")).set(physics.some)(uni)
+      println(physics)
     }
   }
 
