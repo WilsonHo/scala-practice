@@ -1,3 +1,4 @@
+import Dependencies.ExclusionRules
 import sbt._
 
 object Dependencies {
@@ -33,6 +34,8 @@ object Dependencies {
     val osLib                 = "0.3.0"
     val scalaMockV            = "4.4.0"
     val tookitakiCommonsAuthV = "0.0.20"
+    val mariadbJavaClientV    = "2.5.4"
+    val monocleV              = "2.0.0"
   }
 
   import Versions._
@@ -50,10 +53,10 @@ object Dependencies {
   )
 
   val catsDependencies = Seq(
-    "org.typelevel" %% "cats-core"   % catsV,
-    "org.typelevel" %% "cats-free"   % catsV,
-    "org.typelevel" %% "cats-effect" % catsV,
-    "org.typelevel" %% "mouse"       % mouseV
+    "org.typelevel" %% "ucats-core"   % catsV,
+    "org.typelevel" %% "ucats-free"   % catsV,
+    "org.typelevel" %% "ucats-effect" % catsV,
+    "org.typelevel" %% "mouse"        % mouseV
   )
 
   val circeDepedencies = Seq(
@@ -79,5 +82,57 @@ object Dependencies {
   val log4j2Dependencies = Seq(
     "org.apache.logging.log4j" % "log4j-api"  % "2.13.0",
     "org.apache.logging.log4j" % "log4j-core" % "2.13.0"
+  )
+
+  val log4catsDependencies = Seq(
+    "io.chrisdavenport"        %% "log4cats-slf4j"  % "1.0.1",
+    "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.13.1"
+  )
+
+  object ExclusionRules {
+    val json4S                = ExclusionRule(organization = "org.json4s")
+    val jackson               = ExclusionRule(organization = "com.fasterxml.jackson.core")
+    val javaxServlet          = ExclusionRule(organization = "javax.servlet")
+    val orgSlf4j              = ExclusionRule(organization = "org.slf4j")
+    val ldapApi               = ExclusionRule(organization = "org.apache.directory.api")
+    val orgMortbayJetty       = ExclusionRule(organization = "org.mortbay.jetty")
+    val comGoogleCodeFindbugs = ExclusionRule(organization = "com.google.code.findbugs")
+    val orgXerial             = ExclusionRule(organization = "org.xerial")
+    val awsJdk                = ExclusionRule(organization = "com.amazonaws")
+    val spark                 = ExclusionRule(organization = "org.apache.spark")
+    val hikari                = ExclusionRule(organization = "com.zaxxer")
+    val asm                   = ExclusionRule(organization = "asm")
+  }
+
+  val akkaDependencies = Seq(
+    "com.typesafe.akka" %% "akka-actor" % "2.6.3"
+  )
+
+  val jsoupDependencies = Seq(
+    "org.jsoup" % "jsoup" % "1.12.2"
+  )
+
+  val fs2Dependencies = Seq(
+    "co.fs2"     %% "fs2-core"      % "2.2.1",
+    "co.fs2"     %% "fs2-io"        % "2.2.1",
+    "eu.timepit" %% "fs2-cron-core" % "0.2.2"
+  )
+
+  val livyDependencies = Seq(
+    "org.apache.livy" % "livy-client-http"    % "0.7.0-incubating",
+    "org.apache.livy" % "livy-api"            % "0.7.0-incubating",
+    "org.apache.livy" % "livy-rsc"            % "0.7.0-incubating",
+    "org.apache.livy" % "livy-core_2.11"      % "0.7.0-incubating",
+    "org.apache.livy" % "livy-scala-api_2.11" % "0.7.0-incubating"
+  )
+
+  val googleDependencies = Seq(
+    "com.google.guava" % "guava" % "16.0.1"
+  )
+
+  val monocleDependencies = Seq(
+    "com.github.julien-truffaut" %% "monocle-core"  % monocleV,
+    "com.github.julien-truffaut" %% "monocle-macro" % monocleV,
+    "com.github.julien-truffaut" %% "monocle-law"   % monocleV % "test"
   )
 }

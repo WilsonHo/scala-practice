@@ -1,0 +1,3 @@
+curl -XPOST -v -d '{"file": "/user/hduser/jars/spark-examples_2.11-2.4.5.jar", "className": "org.apache.spark.examples.SparkPi", "args": ["100"]},"conf": {"spark.master": "yarn", "spark.submit.deployMode": "client"},"proxyUser" : "hduser"' -H "Content-Type: application/json" localhost:8998/batches
+
+spark-submit --deploy-mode client --class org.apache.spark.examples.SparkPi /opt/spark/examples/jars/spark-examples_2.11-2.4.5.jar 10

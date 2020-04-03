@@ -1,4 +1,4 @@
-package bao.ho.app.cats
+package bao.ho.app.ucats
 
 import cats.effect.{ExitCode, IO, IOApp}
 

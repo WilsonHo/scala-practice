@@ -1,4 +1,4 @@
-package bao.ho.app.cats
+package bao.ho.app.ucats
 import cats._
 import cats.data._
 import cats.implicits._
@@ -39,7 +39,7 @@ object ApplicativeExample {
 
   def main(args: Array[String]): Unit = {
     implicit val userValidatorInterpreter = userValidatorIdInterpreter
-    // userValidatorInterpreter: UserValidator[cats.Id] = $anon$1@49cfb62b
+    // userValidatorInterpreter: UserValidator[ucats.Id] = $anon$1@49cfb62b
 
     println(UserValidator.validate("John", 25, "john@example.com"))
     // User(John,25,john@example.com)

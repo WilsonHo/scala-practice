@@ -35,6 +35,10 @@ lazy val standAlone = (project in file("stand-alone"))
   .settings(libraryDependencies ++= jMimeMagicDependencies)
   .settings(libraryDependencies ++= dropwizardDependencies)
   .settings(libraryDependencies ++= log4j2Dependencies)
+  .settings(libraryDependencies ++= akkaDependencies)
+  .settings(libraryDependencies ++= jsoupDependencies)
+  .settings(libraryDependencies ++= fs2Dependencies)
+  .settings(libraryDependencies ++= monocleDependencies)
   .enablePlugins(ScalafmtPlugin)
 
 lazy val scalatra = (project in file("scalatra"))
@@ -43,6 +47,19 @@ lazy val scalatra = (project in file("scalatra"))
   .settings(libraryDependencies ++= scalatraApiDependencies)
   .settings(libraryDependencies ++= commonsIdDependencies)
   .enablePlugins(ScalatraPlugin)
+  .enablePlugins(ScalafmtPlugin)
+
+lazy val logging = (project in file("logging"))
+  .settings(commonSettings: _*)
+  .settings(name := "logging")
+  .settings(libraryDependencies ++= log4catsDependencies)
+  .enablePlugins(ScalafmtPlugin)
+
+lazy val spark = (project in file("spark"))
+  .settings(commonSettings: _*)
+  .settings(name := "spark")
+  .settings(libraryDependencies ++= livyDependencies)
+  .settings(libraryDependencies ++= googleDependencies)
   .enablePlugins(ScalafmtPlugin)
 
 cleanFiles += baseDirectory { base =>
@@ -104,4 +121,9 @@ def scalacOptionsForVersion(version: String): Seq[String] = {
   }
 
   defaultOpts ++ versionOpts
+}
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.singleOrError
 }
