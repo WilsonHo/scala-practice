@@ -18,21 +18,22 @@ object SubmitSparkPiToCluster {
     println(args)
     //
     val javaHome: String  = "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
-    val sparkHome: String = "/Users/bao.ho/Downloads/spark-2.4.5-bin-hadoop2.7"
+    val sparkHome: String = "/Users/bao.ho/Downloads/spark-1.6.2-bin-hadoop2.6"
     val appResource: String =
-      "/Users/bao.ho/Downloads/spark-2.4.5-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.5.jar"
+      "/Users/bao.ho/Downloads/spark-1.6.2-bin-hadoop2.6/lib/spark-examples-1.6.2-hadoop2.6.0.jar"
     val mainClass: String = "org.apache.spark.examples.SparkPi"
     //
     // parameters passed to the  SparkPi
-    val appArgs: Array[String] = Array("10000")
+    val appArgs: Array[String] = Array("100")
     val spark: SparkLauncher = new SparkLauncher()
       .setVerbose(true)
       .setJavaHome(javaHome)
       .setSparkHome(sparkHome)
       .setAppResource(appResource) // "/my/app.jar"
       .setMainClass(mainClass)     // "my.spark.app.Main"
-      .setMaster("local")
-      .setConf(SparkLauncher.DRIVER_MEMORY, "1g")
+      //      .setMaster("spark://bao-spark-master:7077")
+      .setMaster("local[*]")
+      .setConf(SparkLauncher.DRIVER_MEMORY, "2g")
       .addAppArgs(appArgs: _*)
     //
     // Launches a sub-process that will start the configured Spark application.
