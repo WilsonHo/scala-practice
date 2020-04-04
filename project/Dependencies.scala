@@ -53,10 +53,10 @@ object Dependencies {
   )
 
   val catsDependencies = Seq(
-    "org.typelevel" %% "ucats-core"   % catsV,
-    "org.typelevel" %% "ucats-free"   % catsV,
-    "org.typelevel" %% "ucats-effect" % catsV,
-    "org.typelevel" %% "mouse"        % mouseV
+    "org.typelevel" %% "cats-core"   % catsV,
+    "org.typelevel" %% "cats-free"   % catsV,
+    "org.typelevel" %% "cats-effect" % catsV,
+    "org.typelevel" %% "mouse"       % mouseV
   )
 
   val circeDepedencies = Seq(
@@ -134,5 +134,11 @@ object Dependencies {
     "com.github.julien-truffaut" %% "monocle-core"  % monocleV,
     "com.github.julien-truffaut" %% "monocle-macro" % monocleV,
     "com.github.julien-truffaut" %% "monocle-law"   % monocleV % "test"
+  )
+
+  val hadoopDependencies = Seq(
+    "org.apache.hadoop" % "hadoop-common" % "2.6.3",
+    "org.apache.hadoop" % "hadoop-common" % "2.6.3",
+    "org.apache.hadoop" % "hadoop-core"   % "1.2.1"
   )
 }

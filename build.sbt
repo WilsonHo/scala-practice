@@ -60,6 +60,7 @@ lazy val spark = (project in file("spark"))
   .settings(name := "spark")
   .settings(libraryDependencies ++= livyDependencies)
   .settings(libraryDependencies ++= googleDependencies)
+  .settings(libraryDependencies ++= hadoopDependencies)
   .enablePlugins(ScalafmtPlugin)
 
 cleanFiles += baseDirectory { base =>
